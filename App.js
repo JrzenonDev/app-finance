@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { Header } from "./src/components/Header";
 import Home from "./src/pages/Home";
 
@@ -6,6 +7,7 @@ export default function App() {
     <>
       <Header name="José Roberto" />
       <Home />
+      <StatusBar style="auto" />
     </>
   );
 }
