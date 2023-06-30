@@ -1,11 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Ballance } from "../../components/Ballance";
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
-      <StatusBar style="auto" />
+      <Ballance ballance="13.000,00" expanses="451,00" />
     </View>
   );
 }
@@ -13,8 +12,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#fafafa",
   },
 });
