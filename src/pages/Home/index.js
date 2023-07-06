@@ -2,11 +2,13 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Ballance } from "../../components/Ballance";
 import { Moviments } from "../../components/Moviments";
 import { listExpanses } from "../../mocks/listExpanses";
+import { Actions } from "../../components/Actions";
 
 export default function Home() {
   return (
     <View style={styles.container}>
       <Ballance ballance="13.000,00" expanses="451,00" />
+      <Actions />
       <Text style={styles.title}>Últimas movimentações</Text>
       <FlatList
         style={styles.list}
@@ -27,9 +29,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    marginLeft: 14,
-    marginRight: 14,
-    marginTop: 14,
+    margin: 14
   },
   list: {
     marginStart: 14,
