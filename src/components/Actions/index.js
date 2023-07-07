@@ -32,7 +32,6 @@ export function Actions() {
       <TouchableOpacity style={styles.actionButton}>
         <View style={styles.areaButton}>
           <AntDesign name="barcode" size={26} color="#000" />
-          
         </View>
         <Text style={styles.buttonLabel}>Boletos</Text>
       </TouchableOpacity>

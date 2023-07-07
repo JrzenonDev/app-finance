@@ -1,4 +1,5 @@
 import { Feather } from "@expo/vector-icons";
+import { MotiText, MotiView } from "moti";
 import {
   StatusBar,
   StyleSheet,
@@ -13,12 +14,42 @@ const statusBarHeight = StatusBar.currentHeight
 export function Header({ name }) {
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.userName}>{name}</Text>
+      <MotiView
+        style={styles.content}
+        from={{
+          translateY: -150,
+          opacity: 0,
+        }}
+        animate={{
+          translateY: 0,
+          opacity: 1
+        }}
+        transition={{
+          type: "timing",
+          duration: 800,
+          delay: 300
+        }}
+      >
+        <MotiText
+          style={styles.userName}
+          from={{
+            translateX: -300,
+          }}
+          animate={{
+            translateX: 0,
+          }}
+          transition={{
+            type: "timing",
+            duration: 800,
+            delay: 300
+          }}
+        >
+          {name}
+        </MotiText>
         <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
           <Feather name="user" size={27} color="#fff" />
         </TouchableOpacity>
-      </View>
+      </MotiView>
     </View>
   );
 }
