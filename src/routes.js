@@ -7,7 +7,18 @@ const Tab = createBottomTabNavigator();
 
 export function Routes() {
   return(
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarHideOnKeyboard: true,
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: '#121212',
+        tabBarStyle: {
+          borderTopWidth: 0,
+          backgroundColor: '#fff'
+        }
+      }}
+    >
       <Tab.Screen name='Home' component={Home} />
       <Tab.Screen name='Money' component={Money} />
       <Tab.Screen name='Store' component={Store} />
