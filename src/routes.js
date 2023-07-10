@@ -2,6 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Home from './pages/Home'
 import Money from './pages/Money'
 import Store from './pages/Store'
+import { CustomTabBar } from './components/CustomTabBar';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,9 +16,10 @@ export function Routes() {
         tabBarActiveTintColor: '#121212',
         tabBarStyle: {
           borderTopWidth: 0,
-          backgroundColor: '#fff'
+          backgroundColor: "#fff"
         }
       }}
+      tabBar={ (props) => <CustomTabBar {...props} /> }
     >
       <Tab.Screen name='Home' component={Home} />
       <Tab.Screen name='Money' component={Money} />
