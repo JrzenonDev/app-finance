@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { MaterialIcons } from '@expo/vector-icons'
 
 export function CustomTabBar({ state, descriptors, navigation }) {
   return(
@@ -30,8 +31,24 @@ export function CustomTabBar({ state, descriptors, navigation }) {
           };
 
           return(
-            <TouchableOpacity>
-              <Text>Teste</Text>
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityState={isFocused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              style={styles.buttonTab}
+            >
+              <View>
+                <View>
+                  <MaterialIcons
+                    name={options.tabBarIcon}
+                    size={34}
+                    color={ isFocused ? "#8f2adb" : "#535353" }
+                  />
+                </View>
+              </View>
             </TouchableOpacity>
           )
 
@@ -43,6 +60,9 @@ export function CustomTabBar({ state, descriptors, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+
+  },
+  buttonTab: {
 
   }
 })

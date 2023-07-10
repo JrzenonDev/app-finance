@@ -21,9 +21,27 @@ export function Routes() {
       }}
       tabBar={ (props) => <CustomTabBar {...props} /> }
     >
-      <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='Money' component={Money} />
-      <Tab.Screen name='Store' component={Store} />
+      <Tab.Screen
+        name='Home'
+        component={Home}
+        options={{
+          tabBarIcon: "compare-arrows"
+        }}
+      />
+      <Tab.Screen
+        name='Money'
+        component={Money}
+        options={{
+          tabBarIcon: "attach-money"
+        }}
+      />
+      <Tab.Screen
+        name='Store'
+        component={Store}
+        options={{
+          tabBarIcon: "storefront"
+        }}
+      />
     </Tab.Navigator>
   )
 }
