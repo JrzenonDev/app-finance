@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'
+import { Platform } from "react-native";
 
 export function CustomTabBar({ state, descriptors, navigation }) {
   return(
@@ -40,8 +41,8 @@ export function CustomTabBar({ state, descriptors, navigation }) {
               onLongPress={onLongPress}
               style={styles.buttonTab}
             >
-              <View>
-                <View>
+              <View style={{ alignItems: 'center', padding: 4 }}>
+                <View style={[styles.innerButton, { backgroundColor: isFocused ? '#f8e2fd' : 'transparent', }]}>
                   <MaterialIcons
                     name={options.tabBarIcon}
                     size={34}
@@ -60,9 +61,34 @@ export function CustomTabBar({ state, descriptors, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  content: {
+    borderRadius: 99,
+    flexDirection: 'row',
+    marginBottom: Platform.OS === 'ios' ? 38 : 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    gap: 8,
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.88,
   },
   buttonTab: {
-
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerButton: {
+    padding: 8,
+    borderRadius: 99,
   }
 })
