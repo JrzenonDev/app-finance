@@ -1,3 +1,4 @@
+import "react-native-gesture-handler";
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import { Header } from "./src/components/Header";
@@ -7,8 +8,8 @@ import { Routes } from "./src/routes";
 export default function App() {
   return (
     <>
-      <Header name="José Roberto" />
       <NavigationContainer>
+        <Header name="José Roberto" />
         <Routes />
       </NavigationContainer>
       <StatusBar style="auto" />
