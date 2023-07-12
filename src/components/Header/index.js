@@ -1,17 +1,18 @@
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { MotiText, MotiView } from "moti";
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
+
 const statusBarHeight = StatusBar.currentHeight
   ? StatusBar.currentHeight + 22
   : 64;
 
 export function Header({ name }) {
+  const navigation = useNavigation();
+  const goToSignIn = () => {
+    navigation.navigate("SignIn");
+  };
+
   return (
     <View style={styles.container}>
       <MotiView
@@ -22,12 +23,12 @@ export function Header({ name }) {
         }}
         animate={{
           translateY: 0,
-          opacity: 1
+          opacity: 1,
         }}
         transition={{
           type: "timing",
           duration: 800,
-          delay: 300
+          delay: 300,
         }}
       >
         <MotiText
@@ -41,12 +42,16 @@ export function Header({ name }) {
           transition={{
             type: "timing",
             duration: 800,
-            delay: 300
+            delay: 300,
           }}
         >
           {name}
         </MotiText>
-        <TouchableOpacity activeOpacity={0.9} style={styles.buttonUser}>
+        <TouchableOpacity
+          onPress={goToSignIn}
+          activeOpacity={0.9}
+          style={styles.buttonUser}
+        >
           <Feather name="user" size={27} color="#fff" />
         </TouchableOpacity>
       </MotiView>
