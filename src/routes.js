@@ -1,47 +1,65 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Home from './pages/Home'
-import Money from './pages/Money'
-import Store from './pages/Store'
-import { CustomTabBar } from './components/CustomTabBar';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./pages/Home";
+import Money from "./pages/Money";
+import Store from "./pages/Store";
+import SignIn from "./pages/SignIn";
+import { CustomTabBar } from "./components/CustomTabBar";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function SignInScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SignIn" component={SignIn} />
+    </Stack.Navigator>
+  );
+}
 
 export function Routes() {
-  return(
+  return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: '#121212',
+        tabBarActiveTintColor: "#121212",
         tabBarStyle: {
           borderTopWidth: 0,
-          backgroundColor: "#fff"
-        }
+          backgroundColor: "#fff",
+        },
       }}
-      tabBar={ (props) => <CustomTabBar {...props} /> }
+      tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen
-        name='Home'
+        name="Home"
         component={Home}
         options={{
-          tabBarIcon: "compare-arrows"
+          tabBarIcon: "compare-arrows",
         }}
       />
       <Tab.Screen
-        name='Money'
+        name="Money"
         component={Money}
         options={{
-          tabBarIcon: "attach-money"
+          tabBarIcon: "attach-money",
         }}
       />
       <Tab.Screen
-        name='Store'
+        name="Store"
         component={Store}
         options={{
-          tabBarIcon: "storefront"
+          tabBarIcon: "storefront",
+        }}
+      />
+      <Tab.Screen
+        name="SignIn"
+        component={SignInScreen}
+        options={{
+          tabBarIcon: "storefront",
         }}
       />
     </Tab.Navigator>
-  )
+  );
 }
