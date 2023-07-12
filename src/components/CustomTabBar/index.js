@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons } from "@expo/vector-icons";
 import { Platform } from "react-native";
 
 export function CustomTabBar({ state, descriptors, navigation }) {
-  return(
+  return (
     <View style={styles.container}>
       <View style={styles.content}>
         {state.routes.map((route, index) => {
@@ -13,25 +13,25 @@ export function CustomTabBar({ state, descriptors, navigation }) {
 
           const onPress = () => {
             const event = navigation.emit({
-              type: 'tabPress',
+              type: "tabPress",
               target: route.key,
               canPreventDefault: true,
             });
-  
+
             if (!isFocused && !event.defaultPrevented) {
               // The `merge: true` option makes sure that the params inside the tab screen are preserved
               navigation.navigate({ name: route.name, merge: true });
             }
           };
-  
+
           const onLongPress = () => {
             navigation.emit({
-              type: 'tabLongPress',
+              type: "tabLongPress",
               target: route.key,
             });
           };
 
-          return(
+          return (
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
@@ -41,41 +41,45 @@ export function CustomTabBar({ state, descriptors, navigation }) {
               onLongPress={onLongPress}
               style={styles.buttonTab}
             >
-              <View style={{ alignItems: 'center', padding: 4 }}>
-                <View style={[styles.innerButton, { backgroundColor: isFocused ? '#f8e2fd' : 'transparent', }]}>
+              <View style={{ alignItems: "center", padding: 4 }}>
+                <View
+                  style={[
+                    styles.innerButton,
+                    { backgroundColor: isFocused ? "#f8e2fd" : "transparent" },
+                  ]}
+                >
                   <MaterialIcons
                     name={options.tabBarIcon}
                     size={34}
-                    color={ isFocused ? "#8f2adb" : "#535353" }
+                    color={isFocused ? "#8f2adb" : "#535353"}
                   />
                 </View>
               </View>
             </TouchableOpacity>
-          )
-
+          );
         })}
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   content: {
     borderRadius: 99,
-    flexDirection: 'row',
-    marginBottom: Platform.OS === 'ios' ? 38 : 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    flexDirection: "row",
+    marginBottom: Platform.OS === "ios" ? 38 : 24,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     gap: 8,
     elevation: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -84,11 +88,11 @@ const styles = StyleSheet.create({
     shadowRadius: 3.88,
   },
   buttonTab: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   innerButton: {
     padding: 8,
     borderRadius: 99,
-  }
-})
+  },
+});
